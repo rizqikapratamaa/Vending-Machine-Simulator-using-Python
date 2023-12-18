@@ -1,0 +1,317 @@
+PROGRAM VENDING_MACHINE 
+
+
+KAMUS 
+
+makanan: array [0..3] of array [0..4] 
+
+minuman: array [0..3] of array [0..4] 
+
+saldo: Integer 
+
+ulang_program : Boolean 
+
+pilihan : Integer 
+
+pilihan_makanan: Integer 
+
+pilihan_minuman: Integer 
+
+jumlah_makanan: Integer 
+
+jumlah_minuman: Integer 
+
+cek_habis: Boolean 
+
+ulang_pilih: Boolean 
+
+ulang_produk: Boolean 
+
+ulang_beli: Boolean 
+
+ulang_program: Boolean 
+
+
+ALGORITMA 
+
+makanan <- [["No", "Nama Makanan", "Harga", "Stok"], [1, "Kitela",5000, 10], [2, "Silperkuin", 10000, 10], [3, "Biskuit Badtime", 9000, 10], [4, "Citato", 3000, 10], [5, "Lie's", 3000, 10]] 
+
+minuman <- [["No", "Nama Minuman", "Harga", "Stok"], [1, "Teh Pucuk Haram", 3000, 10], [2, "Pocari Sweet", 6000, 10], [3, "Susu Kambing Jantan Rasa Apel Hijau", 8000, 10], [4, "Koka Kola", 6000, 10], [5, "Susu Beruang", 8500, 10]] 
+
+Input (saldo) 
+
+ulang_program <- True 
+
+While ulang_program == True do 
+
+    output (saldo) 
+
+    ulang_pilih <- True 
+
+    While ulang_pilih == True do 
+
+        input (pilihan) 
+
+        If pilihan == 1 then 
+
+            ulang_produk <- True 
+
+            While ulang_produk == True do 
+
+                cek_habis <- True 
+
+                While cek_habis == True do 
+
+                    input (pilihan_makanan) 
+
+                    if pilihan_makanan > 0 and pilihan_makanan <= 10 do 
+
+                        input (jumlah_makanan) 
+
+                        if jumlah_makanan[pilihan_makanan][3] == 0 then 
+
+                            cek_habis <- True 
+
+                            while cek_habis == True do 
+
+                                output (nama_makanan, "habis.") 
+
+                                input (cek_ganti) 
+
+                                If cek_ganti = "Y" or cek_ganti = "y" then 
+
+                                    cek_habis <- False 
+
+                                    ulang_produk <- False 
+
+                                    ulang_beli <- False 
+
+                                Else if cek_ganti = "N" or cek_ganti = "n" then 
+
+                                    output (saldo) 
+
+                                    cek_habis <- False 
+
+                                    ulang_pilih <- False 
+
+                                    ulang_produk <- False 
+
+                                    ulang_beli <- False 
+
+                                    ulang_program <- False 
+
+                                Else 
+
+                                    output ("Invalid Syntax") 
+
+                            cek_habis <- False 
+
+                    else 
+
+                        cek_habis <- False 
+
+                        harga_makanan <- jumlah_makanan*harga_makanan 
+
+                        if pilihan_makanan > 0 and pilihan makanan <= stok then 
+
+                            ulang_beli <- True 
+
+                            while ulang_beli = True do 
+
+                                if saldo < harga_makanan then 
+
+                                    output ("saldo tidak cukup") 
+
+                                    input (tambahan) 
+
+                                    saldo <- saldo + tambahan 
+
+                                    ulang_beli = False 
+
+                                else 
+
+                                    saldo <- saldo – harga_makanan 
+
+                                    output (harga_makanan) 
+
+                                    output (saldo) 
+
+                                    stok <- stok – jumlah_makanan 
+
+                                    ulang_program <- True 
+
+                                    while ulang_program = True do 
+
+                                        input(lagi) 
+
+                                        if lagi = "Y" or lagi = "y" then 
+
+                                            ulang_program <- False  
+                                            
+                                            ulang_produk <- False 
+
+                                            ulang_beli <- False 
+
+                                        else if lagi = "N" or lagi = "n" then 
+
+                                            output (saldo) 
+
+                                            ulang_program <- False 
+
+                                            ulang_produk <- False 
+
+                                            ulang_pilih <- False 
+
+                                            ulang_beli <- False 
+
+                                        else 
+
+                                            output ("Invalid Syntax") 
+
+                                    ulang_program <- False 
+
+                            ulang_beli <- False 
+
+                        else 
+
+                            output ("Tidak ada di menu") 
+
+                    else 
+
+                        output ("Tidak ada di menu") 
+
+    
+
+        Else if pilihan = 2 then 
+
+            ulang_produk <- True 
+
+            While ulang_produk == True do 
+
+                cek_habis <- True 
+
+                While cek_habis == True do 
+
+                    input (pilihan_minuman) 
+
+                    if pilihan_minuman > 0 and pilihan_minuman <= 10 do 
+
+                        input (jumlah_minuman) 
+
+                        if jumlah_minuman[pilihan_minuman][3] == 0 then 
+
+                            cek_habis <- True 
+
+                            while cek_habis == True do 
+
+                            output (nama_minuman, "habis.") 
+
+                            input (cek_ganti) 
+
+                            If cek_ganti = "Y" or cek_ganti = "y" then 
+
+                                cek_habis <- False 
+
+                                ulang_produk <- False 
+
+                                ulang_beli = False 
+
+                            Else if cek_ganti = "N" or cek_ganti = "n" then 
+
+                                output (saldo) 
+
+                                cek_habis <- False 
+
+                                ulang_pilih <- False 
+
+                                ulang_produk <- False 
+
+                                ulang_beli <- False 
+
+                                ulang_program <- False  
+
+                            Else 
+
+                                output ("Invalid Syntax") 
+
+                            cek_habis <- False 
+
+                        else 
+
+                            cek_habis <- False 
+
+                            harga_minuman <- jumlah_minuman*harga_minuman 
+
+                            if pilihan_minuman > 0 and pilihan minuman <= stok then 
+
+                                ulang_beli <- True 
+
+                                while ulang_beli = True do 
+
+                                if saldo < harga_minuman then 
+
+                                    output ("saldo tidak cukup") 
+
+                                    input (tambahan) 
+
+                                    saldo <- saldo + tambahan 
+
+                                    ulang_beli = False 
+
+                                else 
+
+                                    saldo <- saldo – harga_minuman 
+
+                                    output (harga_minuman) 
+
+                                    output (saldo) 
+
+                                    stok <- stok – jumlah_minuman 
+
+                                    ulang_program <- True 
+
+                                    while ulang_program = True do 
+
+                                        input(lagi) 
+
+                                        if lagi = "Y" or lagi = "y" then 
+
+                                            ulang_program <- False 
+
+                                            ulang_produk <- False 
+
+                                            ulang_beli <- False 
+
+                                        else if lagi = "N" or lagi = "n" then 
+
+                                            output (saldo) 
+
+                                            ulang_program <- False 
+
+                                            ulang_produk <- False 
+
+                                            ulang_pilih <- False 
+
+                                            ulang_beli <- False 
+
+                                        else 
+
+                                            output ("Invalid Syntax") 
+
+                                            ulang_program <- False 
+
+                                            ulang_beli <- False 
+
+                            else 
+
+                                output ("Tidak ada di menu") 
+
+                    else 
+
+                        output ("Tidak ada di menu") 
+
+        else 
+
+            output ("Tidak ada di menu") 
+
+ulang_program <- False 
